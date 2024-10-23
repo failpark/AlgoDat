@@ -1,0 +1,12 @@
+(define (aufsteigendes-produkt? a b c d)
+	(define (aufsteigend a b c d)
+		(and (< a b) (< b c) (< c d))
+	)
+	(define (produkt a b c d)
+		(= (* a b c) d)
+	)
+	(and
+		(aufsteigend a b c d)
+		(produkt a b c d)
+	)
+)
