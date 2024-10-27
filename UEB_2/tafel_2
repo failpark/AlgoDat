@@ -4,6 +4,6 @@ Das neue if wuerde zu einer Endlosschleife fueren, da immer die rekursion ausgew
 Selbst wenn wir den guess zurueckgeben wuerden wird zuvor immer die Rekursion ausgewertet.
 b)
 falsch, da 0*0 > 0 und 1*1 > 1 nicht stimmen
-richtig, da -0 nicht exestiert und wir uns noch auf dem Zahlenstrahl befinden
+falsch, da fuer x = -1 -1 > --1 gelten muesste was -1 > 1 ist was falsch ist
 falsch, da alle zahlen ungerade sind
 richtig, da fuer 34 = 17*2 und 16 = 8*2 die Aussage stimmt und wir nur ein Element pruefen muessen
