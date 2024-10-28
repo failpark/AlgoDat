@@ -27,8 +27,12 @@
 	)
 )
 (define (f3 a b c d)
-	; in gambit xor isn't defined but in racket it is
-	; since we only use racket in algodat this is fine
+	(define (xor a b)
+		(and
+			(or a b)
+			(or (not a) (not b))
+		)
+	)
 	(and
 		(xor
 			(not a)
