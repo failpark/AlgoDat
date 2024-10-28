@@ -31,7 +31,7 @@
 	; since we only use racket in algodat this is fine
 	(and
 		(xor
-			(not(a))
+			(not a)
 			b
 		)
 		(not(or
