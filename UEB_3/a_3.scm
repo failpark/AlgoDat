@@ -1,0 +1,15 @@
+(define (isbn-test isbn)
+	(define (add-helper isbn count sum)
+		(if (= count 0)
+			sum
+			(add-helper (quotient isbn 10) (- count 1) (+ (* (remainder isbn 10) count) sum))
+		)
+	)
+	(define (test-helper count)
+		(if (= (remainder count 11) 10)
+			"X"
+			(remainder count 11)
+		)
+	)
+	(test-helper (add-helper isbn 9 0))
+)
