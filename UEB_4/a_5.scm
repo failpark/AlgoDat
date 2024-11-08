@@ -1,32 +1,25 @@
-#lang racket
-(define (caesar_encrypt n shift)
-	(define (log10 x)
-		(/ (log x) (log 10))
-	)
-	(define (get_size x)
-		(+ (log10 x) 1)
-	)
-	(define (helper num shift pos out)
-		(if (= num 0)
-			out
-			(helper
-				(-
-					num
-					(* (quotient num (expt 10 pos)) (expt 10 pos))
+(define (caesar_encrypt n k)
+	(define (caesar_stelle char k)
+		(remainder (+ char k) 10))
+	(define (caesar_summierung n k res i)
+		(if (= n 0)
+			res
+			(caesar_summierung
+				(quotient n 10)
+				k
+				(+
+					res
+					(*
+						(caesar_stelle
+							(remainder n 10)
+							k
+						)
+						(expt 10 i)
+					)
 				)
-				shift
-				(- pos 1)
-				(+ out (*
-							(if (>= (+ (quotient num (expt 10 pos)) shift) 10)
-								(remainder (+ (quotient num (expt 10 pos)) shift) 10)
-								(+ (quotient num (expt 10 pos)) shift)
-							)
-				(expt 10 pos)))
+				(+ i 1)
 			)
 		)
 	)
-	(helper n shift (floor(log10 n)) 0)
+	(caesar_summierung n k 0 0)
 )
-(caesar_encrypt 1234 1)
-(caesar_encrypt 7901 2)
-(caesar_encrypt 987 1)
