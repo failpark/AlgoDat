@@ -1,25 +1,25 @@
-(define (caesar_encrypt n k)
-	(define (caesar_stelle char k)
-		(remainder (+ char k) 10))
-	(define (caesar_summierung n k res i)
-		(if (= n 0)
-			res
-			(caesar_summierung
-				(quotient n 10)
-				k
+(define (caesar_encrypt num shift)
+	(define (c_pos num shift)
+		(remainder (+ num shift) 10))
+	(define (c_sum num shift result exponent)
+		(if (= num 0)
+			result
+			(c_sum
+				(quotient num 10)
+				shift
 				(+
-					res
+					result
 					(*
-						(caesar_stelle
-							(remainder n 10)
-							k
+						(c_pos
+							(remainder num 10)
+							shift
 						)
-						(expt 10 i)
+						(expt 10 exponent)
 					)
 				)
-				(+ i 1)
+				(+ exponent 1)
 			)
 		)
 	)
-	(caesar_summierung n k 0 0)
+	(c_sum num shift 0 0)
 )
