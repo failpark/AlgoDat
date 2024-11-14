@@ -1,3 +1,4 @@
+#lang racket
 (define (caesar_encrypt num shift)
 	(define (c_pos num shift)
 		(remainder (+ num shift) 10))
@@ -23,3 +24,6 @@
 	)
 	(c_sum num shift 0 0)
 )
+(caesar_encrypt 1234 1)
+(caesar_encrypt 7900 2)
+(caesar_encrypt 987 1)
