@@ -1,0 +1,17 @@
+(define (maxziffer n)
+	(define (helper n curr_max)
+		(if (= n 0)
+			curr_max
+			(let (
+					(x (remainder n 10))
+					(new (quotient n 10))
+				)
+				(if (< curr_max x)
+					(helper new x)
+					(helper new curr_max)
+				)
+			)
+		)
+	)
+	(helper (abs n) 0)
+)

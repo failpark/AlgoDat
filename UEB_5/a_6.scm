@@ -1,0 +1,16 @@
+(define (sum x y)
+	(define (n x) (+ x 1))
+	(define (helper x y)
+		(if (= y 0)
+			x
+			(n (helper x (- y 1)))
+		)
+	)
+	(helper x y)
+)
+(define (mul x y)
+	(if (= y 0)
+		0
+		(sum x (mul x (- y 1)))
+	)
+)
