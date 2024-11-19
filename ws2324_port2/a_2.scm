@@ -1,0 +1,16 @@
+(define (linker-index haystack needle)
+	(define (helper needle haystack last_pos size)
+		(if (= haystack 0)
+			(if (integer? last_pos) (- size last_pos) last_pos)
+			(let*
+				(
+					(to_comp (remainder haystack 10))
+					(haystack (quotient haystack 10))
+					(last_pos (if (= to_comp needle) size last_pos))
+				)
+				(helper needle haystack last_pos (+ size 1))
+			)
+		)
+	)
+	(helper needle (abs haystack) #f 0)
+)
