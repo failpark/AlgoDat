@@ -1,0 +1,20 @@
+#lang racket
+(define (einstellige-quersumme n)
+	(define (quersumme n result)
+		(if (= n 0)
+			result
+			(quersumme (quotient n 10) (+ result (remainder n 10)))
+		)
+	)
+	(define (helper n)
+		(if (= (quotient n 10) 0)
+			n
+			(helper (quersumme n 0))
+		)
+	)
+	(helper (abs n))
+)
+(einstellige-quersumme 123)
+(einstellige-quersumme 1236)
+(einstellige-quersumme -1236)
+(einstellige-quersumme 12368)
