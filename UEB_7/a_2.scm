@@ -5,14 +5,13 @@
 		(if (null? liste)
 		;(if (eq? (list) liste)
 			;(cons result (list))
-                        result
+			result
 			(helper
 				(cdr liste)
-                                    (cons
+				(cons
 					(car liste)
 					result
-                                    )
-                      
+				)
 			)
 		)
 	)
