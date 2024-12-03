@@ -1,0 +1,25 @@
+(define (expandiere haystack)
+	(define (expand needle amount result)
+		(if (= amount 0) result
+		(expand needle (- amount 1) (cons needle result)))
+	)
+	(define (helper haystack result)
+		(if (null? haystack)
+			result
+			(let*
+				(
+					(next (car haystack))
+					(amount (if (integer? next) next 1))
+					(is_one (= amount 1))
+					(needle (if is_one next (cadr haystack)))
+					(haystack (if is_one (cdr haystack) (cddr haystack)))
+					(result (append result (expand needle amount (list))))
+				)
+				(helper haystack result)
+			)
+		)
+	)
+	(helper haystack (list))
+)
+(expandiere '(7 b a 3 c))
+(expandiere '(2 b 2 b c))
