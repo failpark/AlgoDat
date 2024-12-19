@@ -27,7 +27,7 @@
 			)
 		)
 	)
-	(if (and (list? input) (pair? point))
+	(if (and (list? input) (pair? point) (not(null? input)) (not(null? point)))
 		(helper input point (get_struct point (car input)))
 		#f
 	)
