@@ -4,8 +4,8 @@
 		; ofc you should know that...
 		; basic knowledge (╯°□°）╯︵ ┻━┻
 		(sqrt(+
-			(expt (abs(- (car a) (car b))) 2)
-			(expt (abs(- (cdr a) (cdr b))) 2)
+			(expt (- (car a) (car b))) 2)
+			(expt (- (cdr a) (cdr b))) 2)
 		))
 	)
 	(define (get_struct point val)
