@@ -1,0 +1,11 @@
+(define (alle-kleineren val in)
+	(cond
+		((pair? in) (append (alle-kleineren val (car in)) (alle-kleineren val (cdr in))))
+		((null? in) '())
+		((< in val) (list in))
+		(else '())
+	)
+)
+(alle-kleineren 4 '((7 2 (3 40)) (3 4 (2 3 (9)))))
+(alle-kleineren 3 '((3 4 (6 3 (9)) 8)))
+(alle-kleineren 22 '((19 20) (21 22) (23 24)))
