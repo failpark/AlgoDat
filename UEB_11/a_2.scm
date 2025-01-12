@@ -1,3 +1,4 @@
+#lang racket
 (define (deep-memq val in)
 	(if (null? in) #f
 		(let*
@@ -5,7 +6,7 @@
 				(is_list (list? in))
 				(check (if is_list (deep-memq val (car in)) (eq? in val)))
 			)
-			(if is_list
+			(if (and is_list (not check))
 				(deep-memq val (cdr in))
 				check
 			)
